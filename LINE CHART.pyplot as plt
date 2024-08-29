@@ -1,0 +1,39 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import pandas as pd
+
+# Setting the aesthetic style for Seaborn
+sns.set(style="darkgrid")
+
+# Sample data
+np.random.seed(0)
+x = np.linspace(0, 10, 100)
+y1 = np.sin(x)
+y2 = np.cos(x)
+y3 = np.tan(x)
+y4 = np.exp(x / 10)
+y5 = np.log(x + 1)
+y6 = x ** 2
+y7 = x ** 3
+y8 = np.sqrt(x)
+y9 = np.abs(np.sin(x))
+y10 = np.abs(np.cos(x))
+
+# Creating a list of data for simplicity
+data_list = [y1, y2, y3, y4, y5, y6, y7, y8, y9, y10]
+titles = ['Sin(x)', 'Cos(x)', 'Tan(x)', 'Exp(x/10)', 'Log(x+1)', 'x^2', 'x^3', 'Sqrt(x)', '|Sin(x)|', '|Cos(x)|']
+
+# Create subplots
+fig, axes = plt.subplots(5, 2, figsize=(15, 20))
+
+# Flatten axes for easy iteration
+axes = axes.flatten()
+
+# Generating line plots
+for i, (data, title) in enumerate(zip(data_list, titles)):
+    sns.lineplot(x=x, y=data, ax=axes[i])
+    axes[i].set_title(title)
+
+plt.tight_layout()
+plt.show()
